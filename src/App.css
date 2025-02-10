@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+body{
+  background-image: url("./assets/main-bg.png");
+
+}

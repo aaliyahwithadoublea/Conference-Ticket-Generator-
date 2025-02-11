@@ -1,10 +1,12 @@
 import React from 'react';
+import Navbar from '../components/Navbar';
+import SelectTicket from '../components/SelectTicket';
 
 const Events = () => {
     return (
         <div>
-            <h1>Events</h1>
-            <p>Welcome to the Events page!</p>
+            <Navbar />
+            <SelectTicket />
         </div>
     );
 };

@@ -2,5 +2,7 @@
 
 body{
   background-image: url("./assets/main-bg.png");
+  display: flex;
+  justify-content: center;
 
 }

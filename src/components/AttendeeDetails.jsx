@@ -6,8 +6,6 @@ import Form from "./Form";
 const AttendeeDetails = ({ onNext }) => {
   const [profileImageUrl, setProfileImageUrl] = useState("");
 
-
-
   return (
     <section
       style={{
@@ -34,7 +32,7 @@ const AttendeeDetails = ({ onNext }) => {
 
           <hr className="hr-styling" />
 
-          <Form onNext={onNext}/>
+          <Form onNext={onNext} />
         </div>
       </div>
     </section>

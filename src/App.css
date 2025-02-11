@@ -1,8 +1,11 @@
 @import "tailwindcss";
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 body{
   background-image: url("./assets/main-bg.png");
   display: flex;
   justify-content: center;
+  font-family: "Roboto", serif;
 
 }

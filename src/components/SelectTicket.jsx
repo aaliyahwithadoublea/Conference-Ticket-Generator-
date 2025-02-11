@@ -2,6 +2,7 @@ import React from "react";
 import { TicketAccess } from "../utils/ticketAccess";
 import TicketType from "./TicketType";
 import DropdownBtn from "./dropdownBtn";
+import "../index.css";
 
 const SelectTicket = ({ onNext }) => {
   return (

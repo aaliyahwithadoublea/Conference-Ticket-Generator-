@@ -47,12 +47,13 @@ const Form = ({ onNext }) => {
 
     if (!nameError && !emailError) {
       console.log(formData);
-      onNext(); // Navigate to TicketReady.jsx
+      onNext();
     }
   };
 
-  // Check if button should be disabled
-  const isButtonDisabled = !!errors.name || !!errors.email || !formData.name || !formData.email;
+  // Checks if button should be disabled
+  const isButtonDisabled =
+    !!errors.name || !!errors.email || !formData.name || !formData.email;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -96,7 +97,7 @@ const Form = ({ onNext }) => {
 
       <br />
 
-      {/* Special Request Field (Optional) */}
+      {/* Special Request Field */}
       <div>
         <label htmlFor="specialRequest" className="text-select">
           Special Request:
@@ -122,7 +123,9 @@ const Form = ({ onNext }) => {
         </button>
         <button
           type="submit"
-          className={`free-ticketBtn ${isButtonDisabled ? "disabled-button" : ""}`}
+          className={`free-ticketBtn ${
+            isButtonDisabled ? "disabled-button" : ""
+          }`}
           disabled={isButtonDisabled}
         >
           Get My Free Ticket

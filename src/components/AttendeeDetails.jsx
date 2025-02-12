@@ -3,7 +3,7 @@ import TicketUploader from "./TicketUploader";
 import "../index.css";
 import Form from "./Form";
 
-const AttendeeDetails = ({ onNext }) => {
+const AttendeeDetails = ({ onNext, onUpload }) => {
   const [profileImageUrl, setProfileImageUrl] = useState("");
 
   return (
@@ -27,7 +27,7 @@ const AttendeeDetails = ({ onNext }) => {
         <div className="ticket-case">
           <div className="ticket-main">
             {/* File Input */}
-            <TicketUploader onUpload={setProfileImageUrl} />
+            <TicketUploader onUpload={onUpload} />
           </div>
 
           <hr className="hr-styling" />

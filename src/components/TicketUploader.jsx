@@ -52,7 +52,7 @@ const TicketUploader = ({ onUpload }) => {
 
   return (
     <>
-      {/* Hide Ticket Upload if an Image is Uploaded */}
+      {/* Hides Ticket Upload div if an Image is Uploaded */}
       {!uploadedUrl && (
         <div className="ticket-upload">
           <label htmlFor="file" className="upload-label">
@@ -71,7 +71,7 @@ const TicketUploader = ({ onUpload }) => {
       {loading && <p style={{color:"#fff", fontWeight:"bold", fontSize:"20px"}}>Uploading...</p>}
       {error && <p className="error-message">{error}</p>}
 
-      {/* Clickable Uploaded Image for Re-upload */}
+      
       {uploadedUrl && (
         <div onClick={() => document.getElementById("file").click()} style={{ cursor: "pointer" }}>
           <img

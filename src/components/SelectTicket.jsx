@@ -41,7 +41,7 @@ const SelectTicket = ({ onNext }) => {
 
           {/* ticket access */}
           <h5 className="text-select">Select Ticket Type:</h5>
-          <div className="ticket-main">
+          <div className="ticket-mainer">
             <div className="min-h-screen flex items-start justify-center">
               <div className="grid grid-cols-2 gap-5">
                 <div className="flex flex-col gap-4">

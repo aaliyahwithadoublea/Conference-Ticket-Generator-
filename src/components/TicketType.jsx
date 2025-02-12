@@ -12,7 +12,7 @@ const TicketType = ({ className, type, price, space }) => {
     <h3 className="text-white font-semibold">{type}</h3>
     <div className="flex justify-between items-center">
       <span className="text-gray-300" style={{fontFamily:"Roboto"}}>{space}</span>
-      <span className="bg-[#0E464F] text-white px-6 py-2 rounded-md text-sm relative -top-6" style={{fontFamily:"Roboto"}}>
+      <span className="bg-[#0E464F] text-white px-6 py-2 rounded-md text-sm relative -top-2" style={{fontFamily:"Roboto"}}>
         {price}
       </span>
     </div>

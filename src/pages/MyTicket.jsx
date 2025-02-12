@@ -1,10 +1,10 @@
 import React from 'react';
+import TicketReady from '../components/TicketReady';
 
 const MyTicket = () => {
     return (
         <div>
-            <h1>My Ticket</h1>
-            <p>This is your ticket information.</p>
+           <TicketReady />
         </div>
     );
 };

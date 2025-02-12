@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import SelectTicket from "../components/SelectTicket";
 import AttendeeDetails from "../components/AttendeeDetails";
-import TicketReady from "../components/TicketReady"; // Import TicketReady
+import TicketReady from "../components/TicketReady"; 
 
 const Events = () => {
   const [step, setStep] = useState(1);
+  const [profileImageUrl, setProfileImageUrl] = useState("");
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       {step === 1 && <SelectTicket onNext={() => setStep(2)} />}
-      {step === 2 && <AttendeeDetails onNext={() => setStep(3)} />} 
-      {step === 3 && <TicketReady />} 
+      {step === 2 && <AttendeeDetails onNext={() => setStep(3)} onUpload={setProfileImageUrl} />}
+      {step === 3 && <TicketReady profileImageUrl={profileImageUrl} />} 
     </div>
   );
 };

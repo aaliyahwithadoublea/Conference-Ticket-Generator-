@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import "../index.css";
 import envelope from "../assets/envelope.png";
 
-const Form = ({ onNext, onBack, profileImageUrl, setUserDetails, userDetails = {} }) => {
+const Form = ({
+  onNext,
+  onBack,
+  profileImageUrl,
+  setUserDetails,
+  userDetails = {},
+}) => {
   const [formData, setFormData] = useState({
     name: userDetails.name || "",
     email: userDetails.email || "",
@@ -36,39 +42,44 @@ const Form = ({ onNext, onBack, profileImageUrl, setUserDetails, userDetails = {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     if (typeof setUserDetails !== "function") {
       console.error("setUserDetails is not a function!");
       return;
     }
-  
+
     setUserDetails((prev) => ({
       ...prev,
       ...formData,
     }));
-  
+
     const nameError = validateName(formData.name);
     const emailError = validateEmail(formData.email);
-  
+
     setErrors({
       name: nameError,
       email: emailError,
     });
-  
+
     if (!nameError && !emailError && profileImageUrl) {
       onNext();
     }
   };
-  
 
   const isButtonDisabled =
-    !!errors.name || !!errors.email || !formData.name || !formData.email || !profileImageUrl;
+    !!errors.name ||
+    !!errors.email ||
+    !formData.name ||
+    !formData.email ||
+    !profileImageUrl;
 
   return (
     <form onSubmit={handleSubmit}>
       {/* Name Field */}
       <div>
-        <label htmlFor="name" className="text-select">Enter Your Name:</label>
+        <label htmlFor="name" className="text-select">
+          Enter Your Name:
+        </label>
         <input
           type="text"
           id="name"
@@ -85,7 +96,9 @@ const Form = ({ onNext, onBack, profileImageUrl, setUserDetails, userDetails = {
 
       {/* Email Field */}
       <div>
-        <label htmlFor="email" className="text-select">Enter your email*</label>
+        <label htmlFor="email" className="text-select">
+          Enter your email*
+        </label>
         <div className="input-container">
           <img src={envelope} alt="Email Icon" className="input-icon" /> &nbsp;
           <input
@@ -106,7 +119,9 @@ const Form = ({ onNext, onBack, profileImageUrl, setUserDetails, userDetails = {
 
       {/* Special Request Field */}
       <div>
-        <label htmlFor="specialRequest" className="text-select">Special Request:</label>
+        <label htmlFor="specialRequest" className="text-select">
+          Special Request:
+        </label>
         <textarea
           id="specialRequest"
           name="specialRequest"
@@ -128,7 +143,9 @@ const Form = ({ onNext, onBack, profileImageUrl, setUserDetails, userDetails = {
         </button>
         <button
           type="submit"
-          className={`free-ticketBtn ${isButtonDisabled ? "disabled-button" : ""}`}
+          className={`free-ticketBtn ${
+            isButtonDisabled ? "disabled-button" : ""
+          }`}
           disabled={isButtonDisabled}
         >
           Get My Free Ticket

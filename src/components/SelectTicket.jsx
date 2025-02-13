@@ -5,12 +5,11 @@ import TicketType from "./TicketType";
 import DropdownBtn from "./dropdownBtn";
 import "../styling/selectedTicket.css";
 
-const SelectTicket = ({ onNext, onBack,  setUserDetails }) => {
-
+const SelectTicket = ({ onNext, onBack, setUserDetails }) => {
   const [selectedTicket, setSelectedTicket] = useState(null);
- 
+
   const handleTicketSelection = (type) => {
-    setSelectedTicket(type); 
+    setSelectedTicket(type);
     setUserDetails((prev) => ({ ...prev, ticketType: type }));
   };
 
@@ -46,7 +45,7 @@ const SelectTicket = ({ onNext, onBack,  setUserDetails }) => {
             <div className="min-h-screen flex items-start justify-center">
               <div className="ticket-grid">
                 <div className="flex flex-col gap-4">
-                {TicketAccess.slice(0, 2).map((ticket) => (
+                  {TicketAccess.slice(0, 2).map((ticket) => (
                     <TicketType
                       {...ticket}
                       key={ticket.type}
@@ -68,10 +67,12 @@ const SelectTicket = ({ onNext, onBack,  setUserDetails }) => {
           </div>
           {/* Numbeer of Tickets*/}
           <br />
-          <DropdownBtn   onQuantityChange={handleQuantityChange}/>
+          <DropdownBtn onQuantityChange={handleQuantityChange} />
           {/*Button */}
           <div className="round">
-            <button className="back" onClick={onBack}>Cancel</button>
+            <button className="back" onClick={onBack}>
+              Cancel
+            </button>
             <button className="next" onClick={onNext}>
               Next
             </button>

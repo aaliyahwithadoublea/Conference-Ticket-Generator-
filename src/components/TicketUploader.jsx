@@ -68,12 +68,18 @@ const TicketUploader = ({ onUpload }) => {
         </div>
       )}
 
-      {loading && <p style={{color:"#fff", fontWeight:"bold", fontSize:"20px"}}>Uploading...</p>}
+      {loading && (
+        <p style={{ color: "#fff", fontWeight: "bold", fontSize: "20px" }}>
+          Uploading...
+        </p>
+      )}
       {error && <p className="error-message">{error}</p>}
 
-      
       {uploadedUrl && (
-        <div onClick={() => document.getElementById("file").click()} style={{ cursor: "pointer" }}>
+        <div
+          onClick={() => document.getElementById("file").click()}
+          style={{ cursor: "pointer" }}
+        >
           <img
             src={uploadedUrl}
             alt="Uploaded Profile"

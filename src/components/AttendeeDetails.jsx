@@ -3,10 +3,14 @@ import TicketUploader from "./TicketUploader";
 import "../styling/attendeeDetails.css";
 import Form from "./Form";
 
-const AttendeeDetails = ({ onNext, onBack, setProfileImageUrl,profileImageUrl, setUserDetails, userDetails }) => {
- 
-
-
+const AttendeeDetails = ({
+  onNext,
+  onBack,
+  setProfileImageUrl,
+  profileImageUrl,
+  setUserDetails,
+  userDetails,
+}) => {
   // Function to update the profile image URL
   const handleUpload = (url) => {
     setProfileImageUrl(url);
@@ -29,17 +33,24 @@ const AttendeeDetails = ({ onNext, onBack, setProfileImageUrl,profileImageUrl, s
         <div className="ticket-case">
           <div className="ticket-main">
             {/* File Input */}
-            <TicketUploader  onUpload={(url) => {
+            <TicketUploader
+              onUpload={(url) => {
                 handleUpload(url); // Update profileImageUrl
                 updateUserDetails({ profileImageUrl: url });
-              }}  />
+              }}
+            />
           </div>
 
           <hr className="hr-styling" />
 
           {/* Pass profileImageUrl to Form */}
-          <Form onNext={onNext} onBack={onBack}  profileImageUrl={profileImageUrl}  userDetails={userDetails}
-      setUserDetails={setUserDetails} />
+          <Form
+            onNext={onNext}
+            onBack={onBack}
+            profileImageUrl={profileImageUrl}
+            userDetails={userDetails}
+            setUserDetails={setUserDetails}
+          />
         </div>
       </div>
     </section>

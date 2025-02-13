@@ -30,10 +30,18 @@ const Navbar = () => {
       </nav>
 
       <div className={`sidebar ${isOpen ? "open" : ""}`}>
-        <button className="close-btn" onClick={toggleSidebar}>×</button>
-        <Link to="/events" onClick={toggleSidebar}>Events</Link>
-        <Link to="/my-tickets" onClick={toggleSidebar}>My Tickets</Link>
-        <Link to="/about-project" onClick={toggleSidebar}>About Project</Link>
+        <button className="close-btn" onClick={toggleSidebar}>
+          ×
+        </button>
+        <Link to="/events" onClick={toggleSidebar}>
+          Events
+        </Link>
+        <Link to="/my-tickets" onClick={toggleSidebar}>
+          My Tickets
+        </Link>
+        <Link to="/about-project" onClick={toggleSidebar}>
+          About Project
+        </Link>
         <Link to="/my-tickets" onClick={toggleSidebar}>
           <button className="btn">My Tickets →</button>
         </Link>

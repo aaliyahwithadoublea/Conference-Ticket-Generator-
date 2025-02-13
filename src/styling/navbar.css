@@ -43,7 +43,7 @@ nav {
     max-width: fit-content;
     margin-left: 0.6rem;
     overflow-x: hidden;
-    margin-top: 2rem
+    margin-top: 2rem;
   }
   .nav-container nav {
     display: flex;
@@ -126,4 +126,3 @@ nav {
     display: none;
   }
 }
-

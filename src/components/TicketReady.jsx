@@ -4,24 +4,22 @@ import "../styling/ticketReady.css";
 import ticket from "../assets/ticket.png";
 import barcode from "../assets/Bar-code.png";
 import TicketDetails from "./TicketDetails";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
 const TicketReady = ({ profileImageUrl, userDetails }) => {
-
   const navigate = useNavigate();
 
   const navigateToEvents = () => {
     console.log("🚀 Navigating to /events...");
     navigate("/events");
-  
-    
+
     setTimeout(() => {
       window.location.href = "/events";
     }, 500);
   };
 
-   // Load stored data from localStorage
-   const [storedUserDetails, setStoredUserDetails] = useState(() => {
+  // Load stored data from localStorage
+  const [storedUserDetails, setStoredUserDetails] = useState(() => {
     const savedUserDetails = localStorage.getItem("userDetails");
     return savedUserDetails ? JSON.parse(savedUserDetails) : userDetails;
   });
@@ -29,8 +27,7 @@ const TicketReady = ({ profileImageUrl, userDetails }) => {
   const [storedProfileImage, setStoredProfileImage] = useState(() => {
     return localStorage.getItem("profileImageUrl") || profileImageUrl;
   });
-  
- 
+
   useEffect(() => {
     if (userDetails && Object.keys(userDetails).length > 0) {
       setStoredUserDetails(userDetails);
@@ -42,8 +39,6 @@ const TicketReady = ({ profileImageUrl, userDetails }) => {
       localStorage.setItem("profileImageUrl", profileImageUrl);
     }
   }, [userDetails, profileImageUrl]);
- 
-  
 
   return (
     <section
@@ -81,7 +76,7 @@ const TicketReady = ({ profileImageUrl, userDetails }) => {
 
                 {/* Display Uploaded Image */}
                 <div className="image-case">
-                {storedProfileImage ? (
+                  {storedProfileImage ? (
                     <img
                       src={storedProfileImage}
                       alt="Profile"
@@ -112,7 +107,7 @@ const TicketReady = ({ profileImageUrl, userDetails }) => {
         </div>
 
         <div className="flex">
-          <button type="button" className="another"onClick={navigateToEvents}>
+          <button type="button" className="another" onClick={navigateToEvents}>
             Book Another Ticket
           </button>
           <button type="submit" className="download">

@@ -2,28 +2,18 @@ import React from "react";
 import { TicketAccess } from "../utils/ticketAccess";
 import TicketType from "./TicketType";
 import DropdownBtn from "./dropdownBtn";
-import "../index.css";
+import "../styling/selectedTicket.css";
 
-const SelectTicket = ({ onNext }) => {
+const SelectTicket = ({ onNext, onBack }) => {
   return (
-    <section
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "auto",
-        marginTop: "2rem",
-      }}
-    >
+    <section className="smaller">
       <div className="ticket-container">
         {/* Ticket Header */}
         <div className="ticket-header">
           <h3>Text Selection</h3>
           <h5 className="ticket-paging">Step 1/3</h5>
         </div>
-
-        <hr />
-
+        <hr className="reduce" />
         <div className="ticket-case">
           {/* main header for ticket */}
           <div className="ticket-main">
@@ -36,17 +26,15 @@ const SelectTicket = ({ onNext }) => {
               📍 [Event Location] | | March 15, 2025 | 7:00 PM
             </p>
           </div>
-
           <hr className="hr-styling" />
-
           {/* ticket access */}
           <h5 className="text-select">Select Ticket Type:</h5>
           <div className="ticket-mainer">
             <div className="min-h-screen flex items-start justify-center">
-              <div className="grid grid-cols-2 gap-5">
+              <div className="ticket-grid">
                 <div className="flex flex-col gap-4">
-                  <TicketType {...TicketAccess[0]} /> {/* Regular Access */}
-                  <TicketType {...TicketAccess[2]} /> {/* VVIP Access */}
+                  <TicketType {...TicketAccess[0]} />
+                  <TicketType {...TicketAccess[2]} />
                 </div>
                 <div className="flex flex-col justify-between">
                   <TicketType {...TicketAccess[1]} className="h-full" />
@@ -54,17 +42,19 @@ const SelectTicket = ({ onNext }) => {
               </div>
             </div>
           </div>
-
           {/* Numbeer of Tickets*/}
-         <DropdownBtn />
-
-         { /*Button */}
-         <div className="round">
-            <button className="back">Cancel</button>
-            <button className="next" onClick={onNext}>Next</button>
-         </div> <br />
-
-        </div> <br />
+          <br />
+          <DropdownBtn />
+          {/*Button */}
+          <div className="round">
+            <button className="back" onClick={onBack}>Cancel</button>
+            <button className="next" onClick={onNext}>
+              Next
+            </button>
+          </div>{" "}
+          <br />
+        </div>{" "}
+        <br />
       </div>
     </section>
   );

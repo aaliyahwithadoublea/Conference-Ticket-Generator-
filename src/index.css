@@ -67,30 +67,11 @@ hr {
   align-self: stretch;
   background: #07373f;
 }
-.logo {
-  width: 5rem;
-  height: 2rem;
-}
 
-nav {
-  border: 1px solid #197686;
-  background: rgba(5, 37, 44, 0.4);
-  border-radius: 24px;
-  width: 1200px;
-  padding: 12px 16px;
-  backdrop-filter: blur(2px);
-  font-family: "MyCustomFont", sans-serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  color: #b3b3b3;
-}
 
-.nav-container {
-  display: "flex";
-  justify-content: center;
-}
+
+
+
 
 .next {
   font-family: "MyCustomFont", sans-serif;
@@ -510,32 +491,40 @@ option {
   margin-top: 0.5rem;
 }
 
-.another{
-  color: #24A0B5;
-font-family: JejuMyeongjo;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 150%; 
-display: flex;
-padding: var(--Radius-reg-2, 12px) var(--Radius-semi, 24px);
-justify-content: center;
-align-items: center;
-border-radius: var(--Radius-reg, 8px);
-border: 1px solid #24A0B5;
+.another {
+  color: #24a0b5;
+  font-family: JejuMyeongjo;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  display: flex;
+  padding: var(--Radius-reg-2, 12px) var(--Radius-semi, 24px);
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--Radius-reg, 8px);
+  border: 1px solid #24a0b5;
 }
 
-.download{
+.download {
   border-radius: var(--Radius-reg, 8px);
-background: #24A0B5;
-display: flex;
-padding: var(--Radius-reg-2, 12px) var(--Radius-semi, 24px);
-justify-content: center;
-align-items: center;
-color:#fff;
-font-family: JejuMyeongjo;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 150%; 
+  background: #24a0b5;
+  display: flex;
+  padding: var(--Radius-reg-2, 12px) var(--Radius-semi, 24px);
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: JejuMyeongjo;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+pre {
+  margin-top: 0rem;
+}
+
+.bind {
+  margin-top: 1rem;
 }

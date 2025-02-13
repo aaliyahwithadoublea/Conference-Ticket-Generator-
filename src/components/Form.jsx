@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../index.css";
 import envelope from "../assets/envelope.png";
 
-const Form = ({ onNext }) => {
+const Form = ({ onNext, onBack, profileImageUrl }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -45,23 +45,19 @@ const Form = ({ onNext }) => {
       email: emailError,
     });
 
-    if (!nameError && !emailError) {
-      console.log(formData);
-      onNext();
+    if (!nameError && !emailError && profileImageUrl) {
+      onNext(); // Move to next step
     }
   };
 
-  // Checks if button should be disabled
   const isButtonDisabled =
-    !!errors.name || !!errors.email || !formData.name || !formData.email;
+    !!errors.name || !!errors.email || !formData.name || !formData.email || !profileImageUrl;
 
   return (
     <form onSubmit={handleSubmit}>
       {/* Name Field */}
       <div>
-        <label htmlFor="name" className="text-select">
-          Enter Your Name:
-        </label>
+        <label htmlFor="name" className="text-select">Enter Your Name:</label>
         <input
           type="text"
           id="name"
@@ -77,9 +73,7 @@ const Form = ({ onNext }) => {
 
       {/* Email Field */}
       <div>
-        <label htmlFor="email" className="text-select">
-          Enter your email*
-        </label>
+        <label htmlFor="email" className="text-select">Enter your email*</label>
         <div className="input-container">
           <img src={envelope} alt="Email Icon" className="input-icon" /> &nbsp;
           <input
@@ -99,9 +93,7 @@ const Form = ({ onNext }) => {
 
       {/* Special Request Field */}
       <div>
-        <label htmlFor="specialRequest" className="text-select">
-          Special Request:
-        </label>
+        <label htmlFor="specialRequest" className="text-select">Special Request:</label>
         <textarea
           id="specialRequest"
           name="specialRequest"
@@ -118,14 +110,12 @@ const Form = ({ onNext }) => {
 
       {/* Buttons */}
       <div className="flex">
-        <button type="button" className="free-backBtn">
+        <button type="button" className="free-backBtn" onClick={onBack}>
           Back
         </button>
         <button
           type="submit"
-          className={`free-ticketBtn ${
-            isButtonDisabled ? "disabled-button" : ""
-          }`}
+          className={`free-ticketBtn ${isButtonDisabled ? "disabled-button" : ""}`}
           disabled={isButtonDisabled}
         >
           Get My Free Ticket

@@ -1,21 +1,18 @@
 import { useState } from "react";
 import TicketUploader from "./TicketUploader";
-import "../index.css";
+import "../styling/attendeeDetails.css";
 import Form from "./Form";
 
-const AttendeeDetails = ({ onNext, onUpload }) => {
-  const [profileImageUrl, setProfileImageUrl] = useState("");
+const AttendeeDetails = ({ onNext, onBack, setProfileImageUrl,profileImageUrl }) => {
+ 
+
+  // Function to update the profile image URL
+  const handleUpload = (url) => {
+    setProfileImageUrl(url);
+  };
 
   return (
-    <section
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "auto",
-        marginTop: "2rem",
-      }}
-    >
+    <section className="smaller">
       <div className="ticket-container">
         <div className="ticket-header">
           <h3>Attendee Details</h3>
@@ -27,12 +24,13 @@ const AttendeeDetails = ({ onNext, onUpload }) => {
         <div className="ticket-case">
           <div className="ticket-main">
             {/* File Input */}
-            <TicketUploader onUpload={onUpload} />
+            <TicketUploader onUpload={handleUpload} />
           </div>
 
           <hr className="hr-styling" />
 
-          <Form onNext={onNext} />
+          {/* Pass profileImageUrl to Form */}
+          <Form onNext={onNext} onBack={onBack}  profileImageUrl={profileImageUrl} />
         </div>
       </div>
     </section>

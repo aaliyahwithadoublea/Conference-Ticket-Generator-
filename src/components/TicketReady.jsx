@@ -1,10 +1,20 @@
 import React from "react";
-import "../index.css";
+import "../styling/ticketReady.css";
 import ticket from "../assets/ticket.png";
 import barcode from "../assets/Bar-code.png";
 import TicketDetails from "./TicketDetails";
+import { useNavigate } from "react-router-dom"; 
 
 const TicketReady = ({ profileImageUrl }) => {
+  const navigate = useNavigate();
+
+const navigateToEvents = () => {
+  console.log("🚀 Navigating to /events...");
+  navigate("/events");
+};
+
+  
+
   return (
     <section
       style={{
@@ -25,13 +35,12 @@ const TicketReady = ({ profileImageUrl }) => {
 
         <h3 className="booked-header">Your Ticket is Booked!</h3>
         <h5 className="booked-smaller">
-          {" "}
           Check your email for a copy or you can download
         </h5>
 
         <div className="ticket-frame">
           <div
-            className="ticket-bg"
+            className="ticket-bg depth"
             style={{ backgroundImage: `url(${ticket})` }}
           >
             <div style={{ marginTop: "1rem" }}>
@@ -39,6 +48,8 @@ const TicketReady = ({ profileImageUrl }) => {
                 <h2 className="text-bodyHead">Techember Fest ”25</h2>
                 <p className="text-sublet">📍 04 Rumens road, Ikoyi, Lagos</p>
                 <p className="text-sublet">📅 March 15, 2025 | 7:00 PM</p>
+
+                {/* Display Uploaded Image */}
                 <div className="image-case">
                   {profileImageUrl ? (
                     <img
@@ -62,27 +73,23 @@ const TicketReady = ({ profileImageUrl }) => {
                   <TicketDetails />
                 </div>
 
-                <div style={{ marginTop: "3rem" }}>
-                  <img src={barcode} />
+                <div className="move">
+                  <img src={barcode} alt="Barcode" />
                 </div>
               </div>
             </div>
           </div>
         </div>
-      <div className="flex">
-        <button type="button" className="another">
-        Book Another Ticket
-        </button>
-        <button
-          type="submit"
-          className='download'
-    
-        >
-          Download Ticket
-        </button>
-      </div>
-      </div>
 
+        <div className="flex">
+          <button type="button" className="another"onClick={navigateToEvents}>
+            Book Another Ticket
+          </button>
+          <button type="submit" className="download">
+            Download Ticket
+          </button>
+        </div>
+      </div>
     </section>
   );
 };

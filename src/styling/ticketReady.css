@@ -1,0 +1,141 @@
+ @import "tailwindcss";
+
+@font-face {
+  font-family: "MyCustomFont";
+  src: url("./fonts/my-custom-font.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Road+Rage&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Alatsi&display=swap");
+
+
+body {
+  font-family: Roboto;
+} 
+
+  /*  Ticket Details */
+
+   
+  .profile-image {
+    width: 20rem;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 32px;
+  }
+
+  .default-placeholder{
+    width: 20rem;
+    height: 142px;
+    object-fit: cover;
+    border-radius: 32px;
+  } 
+
+  .flex {
+    display: flex;
+    gap: 20px;
+    font-family: "MyCustomFont", sans-serif;
+  }
+
+  .move{
+    margin-top: 2.7rem;
+  }
+
+  .fontyy{
+ 
+    height: 195px;
+  }
+
+  .ticket-body {
+    border-radius: 16px;
+    border: 1px solid #24a0b5;
+    background: rgba(3, 30, 33, 0.1);
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 615px;
+    padding: 14px;
+    align-items: center;
+    margin: 0 auto;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 800px) {
+
+    .ticket-body{
+      height: 300px;
+      margin-top: 5rem;
+      width: 280px;
+      background: none;
+    }
+
+    .profile-image {
+      width: 20rem;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 32px;
+    }
+  
+    .default-placeholder{
+      width: 20rem;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 32px;
+    }
+   
+    .respond-con{
+      height: 240px;
+      margin-top: -0.2rem;
+    }
+    .fontyy{
+      font-size: 12px;
+      margin-top: -0.9rem;
+    }
+    .ticket-bg{
+      height: 780px;
+      
+    }
+
+    
+
+    
+    .ticket-body{
+      height: 470px;
+      padding-top: -4rem;
+      margin-top: rem;
+    }
+
+    .text-bodyHead{
+      font-size: 20px;
+    }
+
+    .text-subtle{
+      font-size: 12px
+    }
+
+    .speccy{
+      font-size: 12px;
+      margin-top: -1rem;
+    }
+
+    .move{
+      margin-top: 1.7rem;
+    }
+
+   .flex{
+    /* margin-top: -3rem; */
+   }
+
+   .another{
+    width: 320px;
+   }
+   .bits{
+    margin-top: -0.3rem;
+   }
+    
+  }

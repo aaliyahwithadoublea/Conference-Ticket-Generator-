@@ -1,10 +1,23 @@
 import React from "react";
+import { useState } from "react";
 import { TicketAccess } from "../utils/ticketAccess";
 import TicketType from "./TicketType";
 import DropdownBtn from "./dropdownBtn";
 import "../styling/selectedTicket.css";
 
-const SelectTicket = ({ onNext, onBack }) => {
+const SelectTicket = ({ onNext, onBack,  setUserDetails }) => {
+
+  const [selectedTicket, setSelectedTicket] = useState(null);
+ 
+  const handleTicketSelection = (type) => {
+    setSelectedTicket(type); 
+    setUserDetails((prev) => ({ ...prev, ticketType: type }));
+  };
+
+  const handleQuantityChange = (quantity) => {
+    setUserDetails((prev) => ({ ...prev, ticketQuantity: quantity }));
+  };
+
   return (
     <section className="smaller">
       <div className="ticket-container">
@@ -33,18 +46,29 @@ const SelectTicket = ({ onNext, onBack }) => {
             <div className="min-h-screen flex items-start justify-center">
               <div className="ticket-grid">
                 <div className="flex flex-col gap-4">
-                  <TicketType {...TicketAccess[0]} />
-                  <TicketType {...TicketAccess[2]} />
+                {TicketAccess.slice(0, 2).map((ticket) => (
+                    <TicketType
+                      {...ticket}
+                      key={ticket.type}
+                      isSelected={selectedTicket === ticket.type}
+                      onClick={() => handleTicketSelection(ticket.type)}
+                    />
+                  ))}
                 </div>
                 <div className="flex flex-col justify-between">
-                  <TicketType {...TicketAccess[1]} className="h-full" />
+                  <TicketType
+                    {...TicketAccess[1]}
+                    className="h-full"
+                    onClick={() => handleTicketSelection(TicketAccess[1].type)}
+                    key={TicketAccess[1].type}
+                  />
                 </div>
               </div>
             </div>
           </div>
           {/* Numbeer of Tickets*/}
           <br />
-          <DropdownBtn />
+          <DropdownBtn   onQuantityChange={handleQuantityChange}/>
           {/*Button */}
           <div className="round">
             <button className="back" onClick={onBack}>Cancel</button>

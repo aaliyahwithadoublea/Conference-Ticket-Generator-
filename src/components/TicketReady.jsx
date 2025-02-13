@@ -1,18 +1,48 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import "../styling/ticketReady.css";
 import ticket from "../assets/ticket.png";
 import barcode from "../assets/Bar-code.png";
 import TicketDetails from "./TicketDetails";
 import { useNavigate } from "react-router-dom"; 
 
-const TicketReady = ({ profileImageUrl }) => {
+const TicketReady = ({ profileImageUrl, userDetails }) => {
+
   const navigate = useNavigate();
 
-const navigateToEvents = () => {
-  console.log("🚀 Navigating to /events...");
-  navigate("/events");
-};
+  const navigateToEvents = () => {
+    console.log("🚀 Navigating to /events...");
+    navigate("/events");
+  
+    
+    setTimeout(() => {
+      window.location.href = "/events";
+    }, 500);
+  };
 
+   // Load stored data from localStorage
+   const [storedUserDetails, setStoredUserDetails] = useState(() => {
+    const savedUserDetails = localStorage.getItem("userDetails");
+    return savedUserDetails ? JSON.parse(savedUserDetails) : userDetails;
+  });
+
+  const [storedProfileImage, setStoredProfileImage] = useState(() => {
+    return localStorage.getItem("profileImageUrl") || profileImageUrl;
+  });
+  
+ 
+  useEffect(() => {
+    if (userDetails && Object.keys(userDetails).length > 0) {
+      setStoredUserDetails(userDetails);
+      localStorage.setItem("userDetails", JSON.stringify(userDetails));
+    }
+
+    if (profileImageUrl) {
+      setStoredProfileImage(profileImageUrl);
+      localStorage.setItem("profileImageUrl", profileImageUrl);
+    }
+  }, [userDetails, profileImageUrl]);
+ 
   
 
   return (
@@ -51,9 +81,9 @@ const navigateToEvents = () => {
 
                 {/* Display Uploaded Image */}
                 <div className="image-case">
-                  {profileImageUrl ? (
+                {storedProfileImage ? (
                     <img
-                      src={profileImageUrl}
+                      src={storedProfileImage}
                       alt="Profile"
                       className="profile-image"
                     />
@@ -70,7 +100,7 @@ const navigateToEvents = () => {
                     marginTop: "0.6rem",
                   }}
                 >
-                  <TicketDetails />
+                  <TicketDetails userDetails={storedUserDetails} />
                 </div>
 
                 <div className="move">

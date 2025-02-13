@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import "../index.css";
 import envelope from "../assets/envelope.png";
 
-const Form = ({ onNext, onBack, profileImageUrl }) => {
+const Form = ({ onNext, onBack, profileImageUrl, setUserDetails, userDetails = {} }) => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    specialRequest: "",
+    name: userDetails.name || "",
+    email: userDetails.email || "",
+    specialRequest: userDetails.specialRequest || "",
   });
 
   const [errors, setErrors] = useState({
@@ -28,7 +28,7 @@ const Form = ({ onNext, onBack, profileImageUrl }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
 
     if (name === "name") setErrors({ ...errors, name: validateName(value) });
     if (name === "email") setErrors({ ...errors, email: validateEmail(value) });
@@ -36,19 +36,30 @@ const Form = ({ onNext, onBack, profileImageUrl }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
+    if (typeof setUserDetails !== "function") {
+      console.error("setUserDetails is not a function!");
+      return;
+    }
+  
+    setUserDetails((prev) => ({
+      ...prev,
+      ...formData,
+    }));
+  
     const nameError = validateName(formData.name);
     const emailError = validateEmail(formData.email);
-
+  
     setErrors({
       name: nameError,
       email: emailError,
     });
-
+  
     if (!nameError && !emailError && profileImageUrl) {
-      onNext(); // Move to next step
+      onNext();
     }
   };
+  
 
   const isButtonDisabled =
     !!errors.name || !!errors.email || !formData.name || !formData.email || !profileImageUrl;
@@ -65,6 +76,7 @@ const Form = ({ onNext, onBack, profileImageUrl }) => {
           value={formData.name}
           onChange={handleChange}
           className="form"
+          required
         />
         {errors.name && <p className="error-message">{errors.name}</p>}
       </div>
@@ -84,6 +96,7 @@ const Form = ({ onNext, onBack, profileImageUrl }) => {
             onChange={handleChange}
             className="form input-with-icon"
             placeholder="hello@avioflagos.io"
+            required
           />
         </div>
         {errors.email && <p className="error-message">{errors.email}</p>}
